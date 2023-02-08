@@ -1,0 +1,197 @@
+* {
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #f0f0f0;
+}
+
+/* keyframe */
+@keyframes ActiveRippleEffect {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(200);
+  }
+}
+
+@keyframes DeactiveRippleEffect {
+  0% {
+    opacity: 0.32;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes FocusRippleEffect {
+  0% {
+    transform: translate(-50%, -50%) scale(9);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(10);
+  }
+}
+
+@keyframes ToastSlideIn {
+  from {
+    opacity: 0;
+    right: -25%;
+  }
+  to {
+    opacity: 1;
+    right: 10px;
+  }
+}
+
+@keyframes ToastSlideOff {
+  from {
+    opacity: 1;
+    right: 10px;
+  }
+  to {
+    opacity: 0;
+    right: -25%;
+  }
+}
+
+/* CSS */
+
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  color: black;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+p {
+  color: rgb(73, 70, 105);
+}
+
+button {
+  padding: 1rem 1.25rem;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #127dff;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  user-select: none;
+}
+
+button:disabled {
+  filter: saturate(0.2) brightness(1.1);
+}
+
+button.outline.secondary {
+  background: transparent;
+  border: 1px solid #127dff;
+  color: #127dff;
+}
+
+button.ghost.secondary {
+  background: transparent;
+  color: #127dff;
+}
+
+button.ghost.secondary:hover {
+  background: #127dff0c;
+  transition: background 150ms ease-in;
+}
+
+span.ripple-span {
+  display: block;
+  /* background: rgba(255, 255, 255, 0.37); */
+  border-radius: 999px;
+
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.32;
+}
+
+span.click-ripple-span {
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 150ms, opacity 350ms ease-in;
+  animation-fill-mode: both;
+  animation: ActiveRippleEffect ease-out 5s;
+}
+
+span.ripple-span.deactive-ripple-span {
+  opacity: 0;
+}
+
+span.focus-ripple-span {
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-fill-mode: both;
+  transition: width 150ms ease-in, height 150ms ease-in;
+}
+
+span.focus-ripple-span.active-ripple-span {
+  width: 8%;
+  /* height: 18%; */
+  height: 16%;
+  animation: FocusRippleEffect ease-in-out infinite alternate 750ms 50ms;
+}
+
+.floating-toast {
+  z-index: 99999999;
+  display: grid;
+  place-items: center;
+  position: fixed;
+  bottom: 10px;
+
+  border: 1px solid #00000015;
+  border-radius: 12px;
+  background: rgba(255, 196, 0, 0.75);
+  color: black;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  -webkit-box-shadow: -1px 10px 46px -10px rgba(124, 100, 204, 0.62);
+  -moz-box-shadow: -1px 10px 46px -10px rgba(124, 100, 204, 0.62);
+  box-shadow: -1px 10px 46px -10px rgba(124, 100, 204, 0.62);
+
+  animation-fill-mode: both;
+}
+
+@supports (backdrop-filter: blur(50px)) {
+  .floating-toast {
+    backdrop-filter: blur(50px);
+  }
+}
+
+.floating-toast[data-state="open"] {
+  animation: ToastSlideIn 250ms ease-in;
+  right: 10px;
+}
+
+.floating-toast[data-state="close"] {
+  animation: ToastSlideOff 500ms ease-out;
+  right: -100%;
+}
+
+
+/*# sourceMappingURL=/styles.dd855970.css.map */

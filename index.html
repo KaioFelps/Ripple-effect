@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KaioFelps • Ripple Effect e Toast</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+
+  <body>
+    <main>
+      <header>
+        <h1>Buttons with ripple effect</h1>
+        <p>Coded with headache by Kaio Felps</p>
+      </header>
+
+      <div class="buttons-wrapper">
+        <button class="ripple-button" type="button">
+          CTA button
+        </button>
+
+        <button class="outline secondary ripple-button">
+          Outline button
+        </button>
+
+        <button class="ghost secondary ripple-button">
+          Ghost button
+        </button>
+
+        <button disabled class="ripple-button">
+          Disabled button
+        </button>
+
+        <button
+          class="ripple-button toast-cta"
+          data-toast-content="Conteúdo da toast!"
+          type="button"
+        >
+          Abrir Toast
+        </button>
+      </div>
+    </main>
+
+    <script src="src/index.ts"></script>
+  </body>
+</html>
